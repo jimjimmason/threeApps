@@ -17,7 +17,7 @@ var ContactForm = React.createClass({
           <input type="button" className="btn btn-primary" value="Add" />
         </td>
         <td>
-          <input type="button" className="btn btn-warning" value="Remove" />
+          {/* <input type="button" className="btn btn-warning" value="Remove" /> */}
         </td>
       </tr>
     );
@@ -26,22 +26,16 @@ var ContactForm = React.createClass({
 
 var Contact = React.createClass ({
   render: function(){
-/*
-    var contactRows = this.props.contactList.map(function(item, index){
-      return (
-        <div>
-        <td>{this.item.name}</td>
-        <td>{this.item.address}</td>
-        <td>{this.item.phone_number}</td>
-        <td></td>
-        <td></td>
-        </div>
-      )
-    });
-*/
+    console.log('Contact');
+    console.log(this.props.contact.name)
+    //var contactRows = this.props.contactList.map(function(item, index){
     return (
       <tr>
-        {/*todo   {contactRows}  */}
+      <td>{this.props.contact.name}</td>
+      <td>{this.props.contact.address}</td>
+      <td>{this.props.contact.phone_number}</td>
+      <td><input type="button" className="btn btn-info" value="Edit" /></td>
+      <td><input type="button" className="btn btn-danger" value="Remove" /></td>
       </tr>
       );
   }
@@ -49,11 +43,15 @@ var Contact = React.createClass ({
 
 var ContactList = React.createClass({
   render: function(){
-    var contactRows = null; //TODO  initailize to an array of contact elements
-    //var contactRows = JSON.parse(this.props.contacts);
+    console.log('ContactsList');
+    //console.log(this.props.contacts);
+    //var contactRows = null; //TODO  initailize to an array of contact elements
+    var contactRows = this.props.contacts.map(contact => {
+        return <Contact key={contact.name} contact={contact} />
+    });
+    console.log(this.contactRows);
     return (
       <tbody>
-        {/* <Contacts contactRows={this.contractRows} /> */ }
         {contactRows}
         <ContactForm />
       </tbody>
@@ -63,6 +61,8 @@ var ContactList = React.createClass({
 
 var ContactsTable = React.createClass({
   render: function(){
+    //console.log('ContactsTable');
+    //console.log(this.props.contacts);
     return (
       <table className="table table-bordered">
         <thead>
@@ -82,6 +82,8 @@ var ContactsTable = React.createClass({
 
 var ContactsApp = React.createClass({
   render: function(){
+    //console.log('ContactsApp');
+    //console.log(this.props.contacts);
     return(
       <div>
         <h1>Contact List.</h1>
