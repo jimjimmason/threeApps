@@ -24,22 +24,36 @@ var ContactForm = React.createClass({
   }
 });
 
-var Contact = React.createClass({
+var Contact = React.createClass ({
   render: function(){
+/*
+    var contactRows = this.props.contactList.map(function(item, index){
+      return (
+        <div>
+        <td>{this.item.name}</td>
+        <td>{this.item.address}</td>
+        <td>{this.item.phone_number}</td>
+        <td></td>
+        <td></td>
+        </div>
+      )
+    });
+*/
     return (
       <tr>
-          <td>{this.props.contacts.name}</td>
-          {/* TODO */}
+        {/*todo   {contactRows}  */}
       </tr>
-    );
+      );
   }
 });
 
 var ContactList = React.createClass({
   render: function(){
-    var contactRows = null; //TODO
+    var contactRows = null; //TODO  initailize to an array of contact elements
+    //var contactRows = JSON.parse(this.props.contacts);
     return (
       <tbody>
+        {/* <Contacts contactRows={this.contractRows} /> */ }
         {contactRows}
         <ContactForm />
       </tbody>
